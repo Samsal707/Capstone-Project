@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react';
+import DateTimePicker from 'react-datetime-picker';
+import Navbar from '../../components/navbar/Navbar';
+
+//need a formcomponet
 
 export default function Booking() {
+  const [value, onChange] = useState(new Date());
+
   return (
-    <div>
+    <>
+      <Navbar />
+      <DateTimePicker onChange={onChange} value={value} />
+
         <p> BOOKING: what I would like to display here ...</p>
         <ul>
           <li>Nav Bar: on choosing logging in successfully users are lead to the booking page. So the navbar will need to display only LOGOUT from home page a user is lead to this page</li>
@@ -15,6 +24,6 @@ export default function Booking() {
           <li> On Logging out they will be directed to the homepage</li>
           <li>footer</li>
         </ul>
-     </div>
+       </>
   )
 }
