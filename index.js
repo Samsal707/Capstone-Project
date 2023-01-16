@@ -1,6 +1,12 @@
 import express from 'express'
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import authRoute from "./routes/auth.js";
+import usersRoute from "./routes/user.js";
+import bookingsRoute from "./routes/booking.js";
+import calendarRoute from "./routes/calendar.js";
+import cookieParser from "cookie-parser";
+import cors from "cors";
 
 
 const app = express();
@@ -20,6 +26,19 @@ const connect = async () => {
 mongoose.connection.on("disconnected", () => {
   console.log("mongoDB disconnected!");
 });
+
+
+//middlewares set up including routes
+app.use(cors())
+app.use(cookieParser())
+app.use(express.json());
+
+
+app.use("/api/auth", authRoute);
+app.use("/api/users", usersRoute);
+app.use("/api/booking", bookingsRoute);
+app.use("/api/calendar", calendarRoute)
+
 
 
 app.use((err, req, res, next) => {
