@@ -1,15 +1,32 @@
 import React, { useState } from 'react';
 import DateTimePicker from 'react-datetime-picker';
-import Navbar from '../../components/navbar/Navbar';
+import Navbar from "../../components/navbar/Navbar";
+import Header from '../../components/header/Header';
+// import useFetch from '../../components/hooks/useFetch';
 
 //need a formcomponet
 
 export default function Booking() {
+  //the business operates during this hours:
+  //mon, tues, wed, friday and sat : 1pm , 2pm , 3pm, 4pm (ending at 5pm)
+  // Thurs : 9am , 10am , 11am, 12pm, 1pm , 3pm, 4pm (ending at 5pm)
+  //Each booking will be 1hr per cat
+
+  //propositions on the booking component:
+  //bring out all booked dates from database - to determine the state of the component 
+  //use AuthContext to obtain username/ userId 
+  //populate the calendar to block out booked dates
+  // const [BookedDates, setBookedDates] = useState([]);
+  // const [selectedTimes, setSelectedTimes] = useState([]);
+  // const { data, loading, error } = useFetch(`/bookings/${userId}`);
+  // const { dates } = useContext();
+  // const { Times } = useContext();
   const [value, onChange] = useState(new Date());
 
   return (
     <>
       <Navbar />
+      <Header />
       <DateTimePicker onChange={onChange} value={value} />
 
         <p> BOOKING: what I would like to display here ...</p>
